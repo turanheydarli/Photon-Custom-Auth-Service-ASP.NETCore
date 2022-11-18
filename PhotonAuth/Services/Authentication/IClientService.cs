@@ -6,6 +6,6 @@ namespace PhotonAuth.Services.Authentication;
 
 public interface IClientService
 {
-    Task<IDataResult<User>> Authenticate(UserLoginDto userLoginDto);
+    Task<IDataResult<UserDto>> Authenticate(UserLoginDto userLoginDto);
     Task<Result> Register(UserRegisterDto userRegisterDto);
 }

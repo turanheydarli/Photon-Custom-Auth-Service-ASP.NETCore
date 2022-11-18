@@ -16,23 +16,30 @@ public class ClientService : IClientService
         _userRepository = userRepository;
     }
 
-    public async Task<IDataResult<User>> Authenticate(UserLoginDto userLoginDto)
+    public async Task<IDataResult<UserDto>> Authenticate(UserLoginDto userLoginDto)
     {
         User user = await _userRepository.GetAsync(u => u.Username == userLoginDto.Username);
 
         if (user == null)
         {
-            return new ErrorDataResult<User>(ResultCodes.InvalidParameters, "Invalid parameters.");
+            return new ErrorDataResult<UserDto>(ResultCodes.InvalidParameters, "Invalid parameters.");
         }
 
         bool result = HashingHelper.VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt);
 
         if (!result)
         {
-            return new ErrorDataResult<User>(ResultCodes.WrongCredentials, "Authentication failed. Wrong credentials.");
+            return new ErrorDataResult<UserDto>(ResultCodes.WrongCredentials,
+                "Authentication failed. Wrong credentials.");
         }
 
-        return new SuccessDataResult<User>(user, user.Username);
+        return new SuccessDataResult<UserDto>(new UserDto
+        {
+            Id = user.Id,
+            Rank = user.Rank,
+            Email = user.Email,
+            Username = user.Username
+        }, user.Username);
     }
 
     public async Task<Result> Register(UserRegisterDto userRegisterDto)
