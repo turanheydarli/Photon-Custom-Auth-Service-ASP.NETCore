@@ -1,7 +1,9 @@
 ﻿using PhotonAuth.Common;
 using PhotonAuth.Models;
+using PhotonAuth.Results;
 using PhotonAuth.Services.Repositories;
 using PhotonAuth.Services.Security;
+using Result = PhotonAuth.Models.Result;
 
 namespace PhotonAuth.Services.Authentication;
 
@@ -14,35 +16,23 @@ public class ClientService : IClientService
         _userRepository = userRepository;
     }
 
-    public async Task<Result> Authenticate(UserLoginDto userLoginDto)
+    public async Task<IDataResult<User>> Authenticate(UserLoginDto userLoginDto)
     {
         User user = await _userRepository.GetAsync(u => u.Username == userLoginDto.Username);
 
         if (user == null)
         {
-            return new Result
-            {
-                Message = "Invalid parameters.",
-                ResultCode = (int)ResultCodes.InvalidParameters
-            };
+            return new ErrorDataResult<User>(ResultCodes.InvalidParameters, "Invalid parameters.");
         }
 
         bool result = HashingHelper.VerifyPasswordHash(userLoginDto.Password, user.PasswordHash, user.PasswordSalt);
 
         if (!result)
         {
-            return new Result
-            {
-                Message = "Authentication failed. Wrong credentials.",
-                ResultCode = (int)ResultCodes.WrongCredentials
-            };
+            return new ErrorDataResult<User>(ResultCodes.WrongCredentials, "Authentication failed. Wrong credentials.");
         }
 
-        return new Result
-        {
-            UserId = user.Username,
-            ResultCode = (int)ResultCodes.Success
-        };
+        return new SuccessDataResult<User>(user, user.Username);
     }
 
     public async Task<Result> Register(UserRegisterDto userRegisterDto)

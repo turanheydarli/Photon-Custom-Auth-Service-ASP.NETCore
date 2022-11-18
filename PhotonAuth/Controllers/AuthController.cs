@@ -19,7 +19,7 @@ public class AuthController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Login([FromQuery] UserLoginDto userLoginDto)
     {
-        Result result = await _clientService.Authenticate(userLoginDto);
+        var result = await _clientService.Authenticate(userLoginDto);
 
         if (result.ResultCode != (int)ResultCodes.Success)
         {
