@@ -36,14 +36,8 @@ namespace PhotonAuth.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("LastSeen")
                         .HasColumnType("timestamp with time zone");
@@ -54,8 +48,8 @@ namespace PhotonAuth.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("bytea");
 
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("text");
+                    b.Property<int>("Rank")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime?>("UpdatedTime")
                         .HasColumnType("timestamp with time zone");
