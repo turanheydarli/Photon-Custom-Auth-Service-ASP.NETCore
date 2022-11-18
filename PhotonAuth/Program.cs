@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PhotonAuth;
 using PhotonAuth.DataAccess;
 using PhotonAuth.Services.Authentication;
 using PhotonAuth.Services.Repositories;
@@ -26,6 +27,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+if (!app.Environment.IsDevelopment())
+{
+    app.Services.ApplyMigrations();
 }
 
 app.UseHttpsRedirection();

@@ -7,6 +7,6 @@ services:
       context: .
       dockerfile: PhotonAuth/Dockerfile
 
-  s_postgresql:
-     container_name: s_postgresql
-     image: postgres
+  p_postgresql:
+    container_name: p_postgresql
+    image: postgres

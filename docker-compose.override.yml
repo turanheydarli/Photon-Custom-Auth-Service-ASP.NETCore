@@ -1,5 +1,5 @@
 version: '3.4'
- 
+
 services:
   photonauth:
     environment:
@@ -9,22 +9,22 @@ services:
     ports:
       - "3008:80"
     depends_on:
-      - s_postgresql
+      - p_postgresql
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
-  s_postgresql:
+  p_postgresql:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: your_pass
       PGDATA: /data/postgres
     volumes:
-       - data-photonauth:/data/postgres
+      - data-photonauth:/data/postgres
     ports:
-      - "5432:5432"
+      - "5431:5432"
     #networks:
     #  - postgres
     restart: unless-stopped
 volumes:
-    data-photonauth:
+  data-photonauth:
