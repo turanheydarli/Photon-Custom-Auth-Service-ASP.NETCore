@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  photonauth:
+    image: ${DOCKER_REGISTRY-}photonauth
+    build:
+      context: .
+      dockerfile: PhotonAuth/Dockerfile
+
+  s_postgresql:
+     container_name: s_postgresql
+     image: postgres

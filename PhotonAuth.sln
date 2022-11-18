@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonAuth", "PhotonAuth\PhotonAuth.csproj", "{49D0DA79-CAB9-401E-B22E-922B46A4A3BA}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhotonAuth", "PhotonAuth\PhotonAuth.csproj", "{49D0DA79-CAB9-401E-B22E-922B46A4A3BA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B3A280EB-F18A-4227-BBD3-966075C27652}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,15 @@ Global
 		{49D0DA79-CAB9-401E-B22E-922B46A4A3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49D0DA79-CAB9-401E-B22E-922B46A4A3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49D0DA79-CAB9-401E-B22E-922B46A4A3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A280EB-F18A-4227-BBD3-966075C27652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A280EB-F18A-4227-BBD3-966075C27652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A280EB-F18A-4227-BBD3-966075C27652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A280EB-F18A-4227-BBD3-966075C27652}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E04C3AFA-9549-4C24-B68A-30A63CE7D36A}
 	EndGlobalSection
 EndGlobal
